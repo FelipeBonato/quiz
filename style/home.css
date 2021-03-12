@@ -1,0 +1,25 @@
+.container-category{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-category{
+    max-width: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+/*css para modo mobile */
+@media screen and (max-width: 500px) {
+    .container-category {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-category {
+        max-width: 100%;
+        margin-right: 0px;
+        margin-bottom: 20px;
+    }
+}

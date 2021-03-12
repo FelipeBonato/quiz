@@ -1,0 +1,25 @@
+{
+    "category": [
+        {
+            "id": 1,
+            "thumbnail":"./img/lulu-da-pomerania.png",
+            "title":"Animais",
+            "description":"Veja perguntas sobre os mais variados animais e curiosidades sobre eles.",
+            "questionsNumber": 30
+        },
+        {
+            "id": 2,
+            "thumbnail":"./img/foto2.png",
+            "title":"Filmes",
+            "description":"Veja perguntas sobre os mais variados filmes e curiosidades sobre eles.",
+            "questionsNumber": 13
+        },
+        {
+            "id": 3,
+            "thumbnail":"./img/Como-usar-a-tecnologia-em-seus-eventos-corporativos.jpg",
+            "title":"Tecnologia",
+            "description":"Veja perguntas sobre as mais variadas tecnolofias e curiosidades sobre elas.",
+            "questionsNumber": 15
+        }
+    ]
+}

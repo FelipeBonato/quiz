@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="./style/home.css">
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
+        crossorigin="anonymous"
+    />
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="./img/unnamed.png" alt="" width="60" height="30" class="d-inline-block align-top">
+            App
+        </a>
+      </div>
+    </nav>
+
+    <!-- Corpo do site -->
+    <div class="container mt-3">
+        <div id="container-category" class="container-category">
+        </div>
+    </div>
+
+</body>
+    <script>
+        function getCategoriesFromApi(){
+            return fetch('http://localhost:3000/category') //busca / requisição
+            .then(res => res.json()) //recebendo a resposta e transformando em json
+        }
+
+        function addCategory(category) {
+            const container = document.getElementById('container-category')
+            container.innerHTML += `
+            <div class="card card-category">
+                <img 
+                src="${category.thumbnail}" class="card-img-top" alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">${category.title}</h5>
+                  <p class="card-text">
+                      ${category.description}
+                  </p>
+
+                </div>
+                <div class="card-footer">
+                    <a href="./quiz.html?id=${category.id}" style="width: 100%" class="btn btn-dark  btn-responder">Responder
+                        <span class="m-1 badge bg-secondary">${category.questionsNumber}perguntas</span>
+                    </a>
+                </div> 
+            </div>
+            `
+        }
+
+        async function inicia() {
+            //Vai no servidor e pega os itens de categoria
+            const categorias = await getCategoriesFromApi()
+
+            //Criou os elementos das categorias na tela
+            for(let i=0; i < categorias.length; i++){
+                const categoria = categorias[i];
+                addCategory(categoria)
+            }
+
+            //Criar o oncliclk para cada botão da tela
+            // const cardCategoriesElementos = document.getElementsByClassName("btn-responder")  //botões
+            // for(let i=0; i < cardCategoriesElementos.length; i++) {
+            //     const cardeCategory = cardCategoriesElementos[i]
+            //     const categoria = categorias[i]
+
+            //     // Quando clicar aqui vai printar a categoria
+            //     cardeCategory.onclick = () => {
+            //         console.log(categoria)
+            //         window.location.href = './quiz.html'
+            //     }
+            // }
+        }
+
+        inicia();
+    </script>
+</html>
